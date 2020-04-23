@@ -1,5 +1,6 @@
 package com.ptak.organizerpersistance.Moonshiner.Entities;
 
+import com.ptak.organizerpersistance.Moonshiner.DTO.ProductionDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,7 +13,7 @@ import java.time.LocalDate;
 @Entity
 @Getter
 @Setter
-public class Production {
+public class ProductionEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,12 +23,19 @@ public class Production {
 
     private LocalDate date;
 
-    public Production() {
-    
+    public ProductionEntity() {
+
     }
 
-    public Production(double liters, LocalDate date) {
+    public ProductionEntity(double liters, LocalDate date) {
         this.liters = liters;
         this.date = date;
+    }
+
+    public ProductionDTO toDTO() {
+        return new ProductionDTO(
+                this.id,
+                this.liters,
+                this.date);
     }
 }

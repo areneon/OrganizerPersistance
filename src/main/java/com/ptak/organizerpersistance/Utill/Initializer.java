@@ -1,6 +1,6 @@
 package com.ptak.organizerpersistance.Utill;
 
-import com.ptak.organizerpersistance.Moonshiner.Entities.Production;
+import com.ptak.organizerpersistance.Moonshiner.Entities.ProductionEntity;
 import com.ptak.organizerpersistance.Moonshiner.Repository.ProductionRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,6 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.Optional;
 
 @Slf4j
 @Component
@@ -24,7 +23,7 @@ public class Initializer {
 
         if (productionRepository.findAll().size() == 0) {
             log.info("Started DB initialization");
-            productionRepository.save(new Production(0.1, LocalDate.now()));
+            productionRepository.save(new ProductionEntity(0.1, LocalDate.now()));
         }
     }
 }
